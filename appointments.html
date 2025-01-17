@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabel's Spa Appointments</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init({
+            publicKey: "Bd3XJR7r7NU07GDhc",
+        });
+    })();
+    </script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <section class="hidden">
+        <div class="topnav"> 
+            <a href="first.html">
+            <img src="./assets/newlogo.png" width="200px" alt="company logo">
+            </a>
+            <a href="first.html">Home</a>
+            <a href="appointments.html">Appointments</a>
+            <a href="ourservices.html">Our Services</a>
+            <a href="aboutme.html">About me</a>
+            <a href="contactme.html">Contact me</a>
+            <a href="https://www.instagram.com/isabels.spa/" target="_blank">
+                <img src="./assets/transparentlogo.png" width="21px" alt="insta logo">
+            </a>
+            <a href="mailto:Isabels2021@icloud.com" target="_blank">
+                <img src="./assets/email.png" width="30px" alt="mail logo">
+            </a>
+        </div>
+    </section>
+    <div class="bg-container">
+        <img class="bg" src="./assets/pink.jpg" />
+        <div class="overlay-text">
+            Appointments
+        </div>
+    </div>
+
+
+    <h4>
+Congratulations on taking the first step! You can create an appointment by either calling (253)290-6080
+    </h4>
+
+    
+<br><br>
+    <div class="container">
+        <h2>Book an Appointment</h2>
+        
+        <input id="date-picker" type="text" placeholder="Select a date" required />
+
+        <div id="available-slots"></div>
+
+        <div id="appointment-form" style="display:none;">
+            <label for="name">Your Name <span style="color: red;">*</span></label>
+            <input id="name" type="text" placeholder="Your Name" required />
+
+            <label for="email">Your Email <span style="color: red;">*</span></label>
+            <input id="email" type="email" placeholder="Your Email" required />
+
+            <label for="phone">Your Phone Number <span style="color: red;">*</span></label>
+            <input id="phone" type="phone" placeholder="Your Phone Number" required />
+
+            <label for="service">Select Service <span style="color: red;">*</span></label>
+            <select id="service" required>
+                <option value="" disabled selected>Select Service</option>
+                <option value="Hydrating Facial">Hydrating Facial</option>
+                <option value="Chemical Peel Facial">Chemical Peel Facial</option>
+                <option value="Dermo">Dermplaning</option>
+                <option value="Haircuts/ Hair Coloring">Haircuts/ Hair Coloring</option>
+                <option value="Brow Tinting">Brow Tinting</option>
+                <option value="Eyelash Extensions / Lift">Eyelash Extensions / Lift</option>
+                <option value="Waxing">Waxing</option>
+            </select>
+
+            <textarea id="notes" placeholder="Additional Notes (Optional)"></textarea>
+            <button id="book-btn" onclick="sendMail()">Book Appointment</button>
+        </div>
+    </div>
+
+    <script>
+        flatpickr("#date-picker", {
+            dateFormat: "Y-m-d",
+            onChange: async (selectedDates, dateStr, instance) => {
+                const availableSlots = [
+                    { startTime: "11:00", endTime: "12:00" },
+                    { startTime: "11:30", endTime: "12:00" },
+                    { startTime: "12:00", endTime: "1:00" },
+                    { startTime: "12:30", endTime: "1:30" },
+                    { startTime: "1:00", endTime: "2:00" },
+                    { startTime: "1:30", endTime: "2:30" },
+                    { startTime: "2:00", endTime: "3:00" },
+                    { startTime: "2:30", endTime: "3:30" },
+                    { startTime: "3:00", endTime: "4:00" },
+                    { startTime: "3:30", endTime: "4:30" },
+                    { startTime: "4:00", endTime: "5:00" },
+                    { startTime: "4:30", endTime: "5:30" },
+                    { startTime: "5:00", endTime: "6:00" },
+                    { startTime: "5:30", endTime: "6:30" },
+                    { startTime: "6:00", endTime: "7:00" },
+                    { startTime: "6:30", endTime: "7:30" },
+                    { startTime: "7:00", endTime: "8:00" },
+                    { startTime: "7:30", endTime: "8:30" },
+                ];
+
+                const slotsContainer = document.querySelector("#available-slots");
+                slotsContainer.innerHTML = ''; 
+
+                availableSlots.forEach(slot => {
+                    const slotEl = document.createElement("div");
+                    slotEl.classList.add("slot");
+                    slotEl.innerText = `${slot.startTime} - ${slot.endTime}`;
+                    slotEl.addEventListener("click", () => selectSlot(slot));
+                    slotsContainer.appendChild(slotEl);
+                });
+            }
+        });
+
+        let selectedSlot = null;
+function selectSlot(slot) {
+    if (selectedSlot) {
+        document.querySelectorAll('.slot').forEach(slotEl => {
+            slotEl.classList.remove('selected');
+        });
+    }
+    selectedSlot = slot; 
+    document.querySelector("#appointment-form").style.display = "block";
+
+    const slots = document.querySelectorAll('.slot');
+    slots.forEach(slotEl => {
+        if (slotEl.innerText === `${slot.startTime} - ${slot.endTime}`) {
+            slotEl.classList.add('selected');
+        }
+    });
+}
+
+
+    </script>
+</body>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2 style="font-style:normal;font-family:Radley; color:black; font-size:45px; background-color: #FFF6EA">
+  Contact
+</h2>
+<div class="contact-container">
+  <h1>Seattle Tacoma Licensed Esthetician</h1>
+  <p>Offering Hydrating Facials, Chemical Peels, Dermaplaning, Haircuts and Hair Coloring, Brow Tinting, Eyelash Extensions/Lift, and Waxing Services</p>
+  <p><strong>CALL:</strong> <a href="tel:+12532906080">(253) 290-6080</a></p>
+  <p><strong>Email:</strong> <a href="mailto:Isabels2021@icloud.com">isabels2021@icloud.com</a></p>
+  <p><strong>Address:</strong> 5244 Filbert Ln SW, Lakewood, WA 98499</p>
+</div>
+</html>

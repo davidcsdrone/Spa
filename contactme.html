@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabel's Spa Contact Me</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="contactmestyle.css">
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+(function(){
+    emailjs.init({
+        publicKey: "Bd3XJR7r7NU07GDhc",
+    });
+})();
+</script>
+    <script src="contactscript.js"></script>
+    <script defer src = "app.js"></script>
+</head>
+<body>
+    <section class="hidden">
+        <div class="topnav"> 
+            <a href="first.html">
+            <img src="./assets/newlogo.png" width="200px" alt="company logo">
+            </a>
+            <a href="first.html">Home</a>
+            <a href="appointments.html">Appointments</a>
+            <a href="ourservices.html">Our Services</a>
+            <a href="aboutme.html">About me</a>
+            <a href="contactme.html">Contact me</a>
+            <a href="https://www.instagram.com/isabels.spa/" target="_blank">
+                <img src="./assets/transparentlogo.png" width="21px" alt="insta logo">
+            </a>
+            <a href="mailto:Isabels2021@icloud.com" target="_blank">
+                <img src="./assets/email.png" width="30px" alt="mail logo">
+            </a>
+        </div>
+    </section>
+
+    <div class="text-container">
+        <h2>GET IN TOUCH</h2>
+</div>
+<div class="text-container">
+    <h2>We'd love to hear from you!</h2>
+</div>
+
+<div class = "container">
+    <div class = "contact-box">
+        <div class = "contact-left">
+            <h3>Send your inquiry</h3>
+            <form>
+                <div class = "input-row">
+                    <div class ="input-group">
+                        <label>Name</label>
+                        <input id ="name" type="text" placeholder="Your Name" required />
+                    </div>
+                </div>
+                <div class = "input-row">
+                    <div class ="input-group">
+                        <label>Phone</label>
+                        <input id ="phone" type="phone" placeholder="Your Phone Number" required />
+                    </div>
+                </div>
+                <div class = "input-row">
+                    <div class ="input-group">
+                        <label>Email</label>
+                        <input id ="email" type="email" placeholder="Your Email" required />
+                    </div>
+                </div>
+                <div class = "input-row">
+                    <div class ="input-group">
+                        <label>Subject</label>
+                        <input id ="subject" type = "text" placeholder="Subject">
+                    </div>
+                </div>
+            
+                <label>Message</label>
+                <textarea row = "5" placeholder = "Your Message" id = "message"></textarea>
+
+                <button id="book-btn" type="button" onclick="sendMail()">Send Message</button>
+
+            </form>
+
+        </div>
+        <div class = "contact-right">
+            <h3>Reach Us</h3>
+            <table>
+                <tr>
+                    <td>Email 📧</td>
+                    <td>isabels2021@icloud.com</td>
+                </tr>
+                <tr>
+                    <td>Phone 📞</td>
+                    <td>253 290-6080</td>
+                </tr>
+                <tr>
+                    <td>Location 📍</td>
+                    <td>5244 Filbert Ln SW, Lakewood, WA 98499<br>  
+                    </td>
+                </tr>
+         
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2 style="font-style:normal;font-family:Radley; color:black; font-size:45px; background-color: #FFF6EA; text-align: center;">
+    Contact
+  </h2>
+<div class="contact-container">
+  <h1 style = "background-color: #FFF6EA;">Seattle Tacoma Licensed Esthetician</h1>
+  <p>Offering Hydrating Facials, Chemical Peels, Dermaplaning, Haircuts and Hair Coloring, Brow Tinting, Eyelash Extensions/Lift, and Waxing Services</p>
+  <p><strong>CALL:</strong> <a href="tel:+12532906080">(253) 290-6080</a></p>
+  <p><strong>Email:</strong> <a href="mailto:Isabels2021@icloud.com">isabels2021@icloud.com</a></p>
+  <p><strong>Address:</strong> 5244 Filbert Ln SW, Lakewood, WA 98499</p>
+</div>
+</html>
