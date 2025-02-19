@@ -86,14 +86,16 @@ p3 {
 }
 
 button {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: black;
+    margin-top: 25px;
+    padding: 20px;
+    background-color: skyblue;
     color: white;
-    font-size: 1rem;
+    font-size: 20px;
 }
 button:hover {
-    background-color: rgb(159, 181, 188);
+    background-color: rgb(179, 217, 229);
+    cursor: pointer;
+
 }
 
 @media screen and (max-width: 600px) {

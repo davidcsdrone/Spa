@@ -3,6 +3,7 @@ function sendMail() {
     const email = document.getElementById("email").value;
     const service = document.getElementById("service").value;
     const phone = document.getElementById("phone").value;
+    const date = document.getElementById("date-picker").value;
 
 
     if (!name || !email || !phone || !service || !selectedSlot) {
@@ -15,6 +16,7 @@ function sendMail() {
         to_email: email,
         service: service,
         phone: phone,
+        date: date,
         time: `${selectedSlot.startTime} - ${selectedSlot.endTime}`, // Access startTime and endTime directly
         from_name: "David",
         from_email: "davidcruzsantiago@berkeley.edu",
